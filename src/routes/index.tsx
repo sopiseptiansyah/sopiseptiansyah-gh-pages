@@ -22,6 +22,6 @@ const router  = createBrowserRouter([
           loader: useTransition
         }
     ]
-}]);
+}], { basename: import.meta.env.DEV ? '/' : '/react-vite-gh-pages/' });
 
 export default router
