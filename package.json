@@ -1,9 +1,12 @@
 {
+  "homepage": "https://sopiseptiansyah.github.io/sopiseptiansyah.github.io/",
   "name": "sopi-septiansyah",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predeploy" : "npm run build",
+    "deploy" : "gh-pages -d dist",
     "dev": "vite --host",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
@@ -17,6 +20,7 @@
     "@react-spring/web": "^9.7.2",
     "@types/react-router-dom": "^5.3.3",
     "framer-motion": "^10.16.14",
+    "gh-pages": "^6.1.0",
     "gsap": "^3.12.1",
     "path": "^0.12.7",
     "react": "^18.2.0",

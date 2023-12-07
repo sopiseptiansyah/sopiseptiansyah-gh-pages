@@ -5,6 +5,7 @@ import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/sopiseptiansyah.github.io/',
   server: {
     port: 3000,
     watch: {
