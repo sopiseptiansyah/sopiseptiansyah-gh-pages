@@ -11,6 +11,9 @@ export default defineConfig(({
 }) => {
   const config = {
     base: '/',
+    server: {
+      port: 3000,
+    },
     plugins: [react()],
     resolve: {
       alias: {
@@ -31,9 +34,7 @@ export default defineConfig(({
     },
   }
 
-  if (command !== 'serve') {
-    config.base = '/sopiseptiansyah-gh-pages/'
-  }
+  console.log(command);
 
   return config
 })
