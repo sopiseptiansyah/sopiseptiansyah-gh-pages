@@ -21,7 +21,7 @@ export const ContentHome = styled.div`
         position: absolute;
         top: 50%;
         left: 50%;
-        background: #64CCC5;
+        background: #008fff;
         width: 0;
         height: 1.2em;
         -ms-transform: translate(-50%,-55%);
@@ -40,13 +40,35 @@ export const ContentHome = styled.div`
     }
 `
 
-export const Heading = styled.h1`
-    font-size: 3.2em;
+export const HeadingName = styled.h2`
+    font-size: 2.8em;
     font-weight: 600;
     line-height: 1.16em;
     margin-top: 0;
     margin-bottom: 10px;
-    color: #64CCC5;
+    mix-blend-mode: multiply;
+    background-blend-mode: multiply;
+`
+export const HeadingSec = styled.h3`
+    font-size: 2.8em;
+    font-weight: 800;
+    line-height: 1.16em;
+    margin-top: 0;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    img{
+        max-width: 42px;
+        margin-right: 15px;
+    }
+`
+export const Heading = styled.h1`
+    font-size: 3.6em;
+    font-weight: 600;
+    line-height: 1.8em;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #008fff;
     mix-blend-mode: multiply;
     background-blend-mode: multiply;
 `
@@ -83,7 +105,7 @@ const scroll = keyframes`
 export const Arrow = styled.div`
     width: 0;
 	height: 40px;
-	border: 1px solid #64CCC5;
+	border: 1px solid #008fff;
     position: absolute;
     left: 0;
     right: 0;
@@ -101,7 +123,7 @@ export const Arrow = styled.div`
     height: 10px;
 		
 		// triangle
-    border-top: 10px solid #64CCC5;
+    border-top: 10px solid #008fff;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
 	}

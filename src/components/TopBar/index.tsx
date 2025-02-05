@@ -1,10 +1,12 @@
-import { FC, useContext } from 'react';
+import { FC, useContext, useLayoutEffect } from 'react';
 import styled from 'styled-components'
 import Container from '../Container';
-import LogoImage from '@assets/images/logo.png';
+import LogoImage from '@assets/images/logo-ss.png';
 import { ArrowSquareUpRight } from '@phosphor-icons/react';
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ColorContext from '@/libs/colorContext';
+import gsap from 'gsap';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Header = styled.div`
     position: fixed;
@@ -28,8 +30,7 @@ const Logo = styled(Link)`
     }
 
     img{
-        max-width: 50px;
-        filter: invert(1) brightness(10);
+        max-width: 120px;
     }
 `;
 
@@ -46,15 +47,14 @@ const NavMenu = styled.ul<{ color?: string; }>`
     li{
         a{
             outline: 0;
-            color: #fff;
             text-decoration: none;
             transition: all .2s ease-in-out;
             &:hover{
-                color: ${props => props.color === "primary" ? "#64CCC5" : "#001C30"};
+                color: ${props => props.color === "primary" ? "#008fff" : "#001C30"};
             }
             &.active{
-                color: ${props => props.color === "primary" ? "#64CCC5" : "#001C30"};
-                border-bottom: 2px solid ${props => props.color === "primary" ? "#64CCC5" : "#001C30"};
+                color: ${props => props.color === "primary" ? "#008fff" : "#001C30"};
+                border-bottom: 2px solid ${props => props.color === "primary" ? "#008fff" : "#001C30"};
                 pointer-events: none;
             }
         }
@@ -66,10 +66,9 @@ const ContactNav = styled.div`
     flex-direction: row;
     align-items: center;
     a{
-        color: #fff;
         font-weight: 600;
         text-decoration: none;
-        border: 1.8px solid #fff;
+        border: 1.8px solid #008fff;
         padding: 6px 14px;
         display: flex;
         align-items: center;
@@ -78,24 +77,49 @@ const ContactNav = styled.div`
             margin-left: 6px;
         }
         &:hover{
-            background-color: #64CCC5;
-            border: 1.8px solid #64CCC5;
-            color: #176B87;
+            background-color: #008fff;
+            border: 1.8px solid #008fff;
+            color: #fff !important;
         }
     }
 `
 
+
 const TopBar: FC = () => {
     const { color } = useContext(ColorContext);
     
+    gsap.registerPlugin(ScrollTrigger);
+
+    useLayoutEffect(() => {
+        const showAnim = gsap.from(".header", {
+                            yPercent: -80,
+                            paused: true,
+                            duration: 0.4
+                        }).progress(1);
+
+        const ctx = gsap.context(() => {
+            gsap.timeline({ 
+                scrollTrigger: {
+                  start: "top top",
+                  scrub: true,
+                  pin: true,
+                  onUpdate: (self) => {
+                        self.direction === -1 ? showAnim.play() : showAnim.reverse();
+                    }
+                } 
+              });
+        }, []);
+        return () => ctx.revert();
+    },[])
+    
     return (
-        <Header>
+        <Header className='header'>
             <Container className='nav-container'>
                 <Logo to={`/`}>
                     <img src={LogoImage} alt="Logo" />
                 </Logo>
                 <NavMenu color={color}>
-                    <li>
+                    {/* <li>
                         <NavLink 
                             to="/"
                             className={({ isActive, isPending }) =>
@@ -106,12 +130,12 @@ const TopBar: FC = () => {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/about">
+                        <a href="#about">
                             About
-                        </NavLink>
+                        </a>
                     </li>
                     <li>
-                        <NavLink to="/work">
+                        <NavLink to="#work">
                             Work
                         </NavLink>
                     </li>
@@ -119,13 +143,15 @@ const TopBar: FC = () => {
                         <NavLink to="/services">
                             Services
                         </NavLink>
+                    </li> */}
+                    <li>
+                        <ContactNav>
+                            <Link to="https://wa.me/6289663656560?text=Hello Sopi Septiansyah, I Want to ..." target='_blank'>
+                                Let`s Talk! <ArrowSquareUpRight size={36} />
+                            </Link>
+                        </ContactNav>
                     </li>
                 </NavMenu>
-                <ContactNav>
-                    <Link to="https://wa.me/6289663656560?text=Hello Sopi Septiansyah, I Want to ..." target='_blank'>
-                        Let`s Talk! <ArrowSquareUpRight size={36} />
-                    </Link>
-                </ContactNav>
             </Container>
         </Header>
     )

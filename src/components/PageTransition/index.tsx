@@ -1,7 +1,7 @@
 import { FC, useLayoutEffect, useRef } from 'react'
 import { useLocation } from 'react-router-dom';
 import { gsap } from 'gsap';
-import './_styles.scss';
+
 
 export const useTransition = () => {
     return gsap.to(".page-transition", { opacity: 1, x: 0, duration: 0.5 });

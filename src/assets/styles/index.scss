@@ -1,5 +1,5 @@
-@import './normalize';
-@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200&display=swap');
+// @import './normalize';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 body, html {
     line-height: 1.6em;
@@ -7,7 +7,10 @@ body, html {
     font-size: 20px;
     font-weight: 300;
     letter-spacing: 0.14em;
-    background-color: #001C30;
+}
+
+.page{
+    overflow: hidden;
 }
 
 .page-enter {
@@ -30,4 +33,182 @@ body, html {
 .page-exit-active {
     opacity: 1;
     transition: all .2s ease-in-out;
+}
+
+.text-description-website{
+    font-size: 1.6em;
+    font-weight: 500;
+    line-height: 1.5em;
+}
+
+.section-two{
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+.text-question{
+    font-size: 2em;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    margin-top: 50px;
+    color: #fff;
+}
+
+.heading-three{
+    font-size: 2em;
+    font-weight: 800;
+}
+
+.card-care-about{
+    padding: 25px;
+    min-height: 280px;
+    border: 1px solid #fff;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+    img {
+        max-height: 150px;
+        width: auto;
+        object-fit: contain;
+    }
+    .chakra-text{
+        font-size: 1.4em;
+        font-weight: 600;
+    }
+
+    .text-subline{
+        font-size: 10px;
+        text-align: center;
+        font-weight: 400;
+    }
+    
+}
+
+
+.about-me{
+    position: absolute;
+    bottom: -50px;
+    z-index: 9999;
+    opacity: 0;
+    color: #333333;
+    strong{
+        color: #008fff;
+        font-weight: 800;
+    }
+}
+
+.img-element{
+    position: absolute;
+    right: -84px;
+    max-width: 300px;
+    bottom: -64px;
+    transform: rotate(25deg);
+}
+
+.img-element-2{
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    filter: invert(1);
+    opacity: 0;
+    right: -100px;
+}
+
+.heading-care{
+    width: max-content;
+    margin: auto;
+    font-size: 1.8rem !important;
+}
+
+.card-works{
+    height: 360px;
+    overflow: hidden;
+    border-radius: 14px;
+    position: relative;
+    display: block;
+    &::before{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: rgb(0,0,0);
+        background: linear-gradient(180deg, rgba(0,0,0,0) 25%, rgba(255,255,255,1) 100%);
+        z-index: 2;
+        mix-blend-mode: overlay;
+    }
+    img{
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        transition: all .2s ease;
+    }
+
+    .content-works{
+        background-color: rgb(255 255 255 / 80%);
+        position: absolute;
+        z-index: 10;
+        color: #333333;
+        padding: 25px;
+        bottom: 0;
+        width: 100%;
+        opacity: 0;
+        transition: all .2s ease;
+        padding-top: 15px;
+        span{
+            font-size: 0.6rem;
+            font-weight: 600;
+        }
+
+        h3{
+
+        font-size: 1.9rem;  
+            font-weight: 800;
+            color: #008fff;
+        }
+    }
+
+    &:hover{
+        img{
+            filter: grayscale(1) blur(2px);
+            transform: scale(1.1);
+            
+        }
+        .content-works{
+            opacity: 1;
+            
+        }
+    }
+}
+
+
+.contact-list{
+    list-style: none;
+    li{
+        margin-bottom: 25px;
+    }
+    a{
+        display: flex;
+        font-weight: 500;
+        transition: all .2s ease;
+        .line{
+            display: flex !important;
+        }
+        img{
+            max-width: 30px;
+            margin-right: 10px;
+        }
+        &:hover{
+            color: #008fff,
+        }
+    }
 }

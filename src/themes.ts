@@ -1,15 +1,18 @@
 import { ThemeConfig, extendTheme } from '@chakra-ui/react'
 
 const config: ThemeConfig = {
-  initialColorMode: 'dark',
+  initialColorMode: 'light',
   useSystemColorMode: false,
 }
 
 const styles = {
-    global: (props: { colorMode: string }) => ({
+    global: () => ({
       'html, body': {
-        background: props.colorMode === 'dark' ? 'brand.secondary' : 'gray.50',
-        fontFamily: `"Kanit", sans-serif`,
+        // background: props.colorMode === 'dark' ? 'brand.secondary' : 'gray.50',
+        fontFamily: '"Montserrat", serif',
+        backgroundColor: '#eaeaea',
+        color: '#333333'
+
       },
     }),
 }
@@ -17,12 +20,12 @@ const styles = {
 
 const colors = {
   brand: {
-    primary: '#64ccc5',
-    secondary: '#001C30',
+    primary: '#008fff',
+    secondary: '#333333',
     50: '#f2fbfa',
     100: '#d4f3ef',
     200: '#a9e6df',
-    300: '#64ccc5',
+    300: '#008fff',
     400: '#4ab7b4',
     500: '#309c9a',
     600: '#247d7d',

@@ -3,7 +3,7 @@ import App from "@/App";
 import Home from "@pages/home"
 import About from "@/pages/about";
 import { createBrowserRouter } from "react-router-dom";
-import { useTransition } from "@/components/PageTransition";
+// import { useTransition } from "@/components/PageTransition";
 
 const router  = createBrowserRouter([
   {
@@ -14,12 +14,12 @@ const router  = createBrowserRouter([
         {
           path: "/",
           element: <Home />,
-          loader: useTransition
+          // loader: useTransition
         },
         {
           path: "/about",
           element: <About />,
-          loader: useTransition
+          // loader: useTransition
         }
     ]
 }], { basename: import.meta.env.DEV ? '/' : '/react-vite-gh-pages/' });
